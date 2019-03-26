@@ -36447,3 +36447,60 @@ java.lang.NullPointerException
 2019-03-26 14:30:44 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
 2019-03-26 14:30:44 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
 2019-03-26 14:30:44 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
+2019-03-26 21:38:39 INFO  JavaRushTasksProjectComponent.projectOpened(76) - ---------- Project JavaRushTasks opened ----------
+2019-03-26 21:38:39 INFO  JavaRushTasksProjectComponent.projectOpened(77) - ---------- Version 3.28 ----------
+
+2019-03-26 21:38:39 INFO  JavaRushTasksProjectComponent.setAutoscrolls(361) - Autoscrolls успешно установлены
+2019-03-26 21:38:40 INFO  ApacheHttpClient.createAsyncHttpClient(130) - Выбрано 1 прокси. Тип : DIRECT
+2019-03-26 21:38:40 INFO  ApacheHttpClient.<init>(88) - ApacheHttpClient проинстанциирован успешно.
+2019-03-26 21:38:44 INFO  ApacheHttpClient.testConnection(188) - responseCode = 200
+2019-03-26 21:38:44 INFO  ApacheHttpClient.testConnection(203) - result = true
+2019-03-26 21:38:45 INFO  ApacheHttpClient.login(233) - Ожидание ответа сервера.
+2019-03-26 21:38:45 INFO  ApacheHttpClient.login(237) - responseCode = 200
+2019-03-26 21:38:45 INFO  ApacheHttpClient.login(268) - JSESSIONID OK
+2019-03-26 21:38:45 INFO  ApacheHttpClient.refreshUserInfo(296) - responseCode = 200
+2019-03-26 21:38:45 INFO  ApacheHttpClient.refreshUserInfo(302) - Информация о пользователе получена.
+2019-03-26 21:38:45 INFO  ApacheHttpClient.startGA(33) - GAService запущен.
+2019-03-26 21:38:45 WARN  JavaRushUtil.isProjectStructureCorrect(350) - Структура проекта невалидная.
+2019-03-26 21:39:10 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-03-26 21:39:10 WARN  JavaRushUtil.isProjectStructureCorrect(350) - Структура проекта невалидная.
+2019-03-26 21:40:27 INFO  InfoPanel.getQuestHtmlByVF(152) - Создана панель для квеста 1.JavaSyntax
+2019-03-26 21:40:53 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-03-26 21:40:53 WARN  JavaRushUtil.isProjectStructureCorrect(350) - Структура проекта невалидная.
+2019-03-26 21:41:02 INFO  JavaRushTasksProjectComponent.projectClosing(183) - ---------- Project JavaRushTasks closed ----------
+
+2019-03-26 21:42:50 INFO  JavaRushTasksProjectComponent.projectOpened(76) - ---------- Project JavaRushTasks opened ----------
+2019-03-26 21:42:50 INFO  JavaRushTasksProjectComponent.projectOpened(77) - ---------- Version 3.28 ----------
+
+2019-03-26 21:42:50 INFO  ApacheHttpClient.createAsyncHttpClient(130) - Выбрано 1 прокси. Тип : DIRECT
+2019-03-26 21:42:50 INFO  ApacheHttpClient.<init>(88) - ApacheHttpClient проинстанциирован успешно.
+2019-03-26 21:42:51 INFO  ApacheHttpClient.testConnection(188) - responseCode = 200
+2019-03-26 21:42:51 INFO  ApacheHttpClient.testConnection(203) - result = true
+2019-03-26 21:42:52 INFO  ApacheHttpClient.login(233) - Ожидание ответа сервера.
+2019-03-26 21:42:52 INFO  ApacheHttpClient.login(233) - Ожидание ответа сервера.
+2019-03-26 21:42:52 INFO  ApacheHttpClient.login(237) - responseCode = 200
+2019-03-26 21:42:52 INFO  ApacheHttpClient.login(268) - JSESSIONID OK
+2019-03-26 21:42:52 INFO  ApacheHttpClient.refreshUserInfo(296) - responseCode = 200
+2019-03-26 21:42:52 INFO  ApacheHttpClient.refreshUserInfo(302) - Информация о пользователе получена.
+2019-03-26 21:42:52 INFO  ApacheHttpClient.startGA(33) - GAService запущен.
+2019-03-26 21:42:52 INFO  AbstractRestApiClient.startService(70) - EventsService запущен.
+2019-03-26 21:42:59 INFO  ApacheHttpClient.testConnection(188) - responseCode = 200
+2019-03-26 21:42:59 INFO  ApacheHttpClient.testConnection(203) - result = true
+2019-03-26 21:43:01 INFO  ApacheHttpClient.testConnection(188) - responseCode = 200
+2019-03-26 21:43:01 INFO  ApacheHttpClient.testConnection(203) - result = true
+2019-03-26 21:43:03 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-03-26 21:43:10 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-03-26 21:43:12 INFO  ApacheHttpClient.getFilteredTasks(329) - responseCode = 200
+2019-03-26 21:43:53 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
+2019-03-26 21:44:09 INFO  ApacheHttpClient.testConnection(188) - responseCode = 200
+2019-03-26 21:44:09 INFO  ApacheHttpClient.testConnection(203) - result = true
+2019-03-26 21:44:11 INFO  ApacheHttpClient.testConnection(188) - responseCode = 200
+2019-03-26 21:44:11 INFO  ApacheHttpClient.testConnection(203) - result = true
+2019-03-26 21:44:43 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-03-26 21:44:43 INFO  ApacheHttpClient.getTask(477) - responseCode = 200
+2019-03-26 21:44:43 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-03-26 21:44:45 INFO  ApacheHttpClient.completed(27) - responseCode = 200
+2019-03-26 21:44:53 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
+2019-03-26 21:46:04 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
+2019-03-26 21:46:53 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
+2019-03-26 21:47:53 INFO  ApacheHttpClient.sendEvent(525) - responseCode = 200
