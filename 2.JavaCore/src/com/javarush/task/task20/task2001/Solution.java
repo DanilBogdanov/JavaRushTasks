@@ -13,16 +13,19 @@ public class Solution {
         //исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
             File your_file_name = File.createTempFile("your_file_name", null);
+            your_file_name = new File("D:/1.txt");
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
-            Human ivanov = new Human("Ivanov", new Asset("home", 999_999.99), new Asset("car", 2999.99));
+            Human ivanov = new Human("Ivanov", new Asset("home", 999_999.99),
+                    new Asset("car", 2999.99));
             ivanov.save(outputStream);
             outputStream.flush();
 
             Human somePerson = new Human();
             somePerson.load(inputStream);
             inputStream.close();
+            System.out.println("are all good ? -- " + ivanov.equals(somePerson));
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
 
         } catch (IOException e) {
@@ -68,10 +71,39 @@ public class Solution {
 
         public void save(OutputStream outputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream))) {
+                writer.write("Human");
+                writer.newLine();
+                writer.write("name:" + this.name);
+                writer.newLine();
+                writer.write("assets:" + assets.size());
+                for (Asset asset : assets) {
+                    writer.newLine();
+                    writer.write(asset.getName() + "<>" + asset.getPrice());
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            String [] line;
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                if ("Human".equals(reader.readLine())) {
+                    name = reader.readLine().substring(5);
+                    int countAssets = Integer.parseInt(reader.readLine().substring(7));
+                    for (int i = 0; i < countAssets; i++) {
+                        line = reader.readLine().split("<>");
+                        String assetName = line[0];
+                        Double assetprice = Double.parseDouble(line[1]);
+                        assets.add(new Asset(assetName, assetprice));
+                    }
+                } else {
+                    System.out.println("This is not human");
+                }
+            }
         }
     }
 }
