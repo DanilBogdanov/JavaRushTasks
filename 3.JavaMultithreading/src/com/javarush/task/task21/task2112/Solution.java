@@ -7,6 +7,8 @@ public class Solution {
             System.out.println("Entering body of try block.");
             fakeConnection.usefulOperation();
             fakeConnection.unsupportedOperation();
+            Object object = new Object();
+
 
         } catch (Exception e) {
         }
