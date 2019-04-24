@@ -2,8 +2,8 @@
 ## Idea
 #############
 #target/
-#.idea/
-#.idea
+.idea/
+.idea
 #.repository/
 #*.iml
 #*.iws
@@ -12,14 +12,13 @@
 #*.class
 #*.info
 #*.properties
-*.log
-
 #/1.JavaSyntax/
 #/2.JavaCore/
 #/3.JavaMultithreading/
 #/4.JavaCollections/
 #/5.OnlineInternship/
 #/out/
+*.log
 /JavaRushPlugin.properties
 /Инструкция.png
 /out.log
