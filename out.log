@@ -8535,3 +8535,12 @@ java.net.UnknownHostException: javarush.ru
 2019-04-24 14:10:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
 2019-04-24 14:11:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
 2019-04-24 14:12:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:13:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:14:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:15:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:16:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:17:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:18:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:19:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:20:32 WARN  PluginUtil.getCurrentTask(71) - Error while retrieving the task key.
+2019-04-24 14:20:32 WARN  PluginUtil.getCurrentTask(71) - Error while retrieving the task key.
