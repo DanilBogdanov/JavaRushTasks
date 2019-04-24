@@ -8496,3 +8496,42 @@ java.net.UnknownHostException: javarush.ru
 2019-04-23 18:16:32 INFO  ApacheHttpClient.getWebResourceAsStream(485) - responseCode = 200
 2019-04-23 18:16:32 INFO  ApacheHttpClient.getFilteredTasks(324) - responseCode = 200
 2019-04-23 18:16:59 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-23 18:17:59 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-23 18:18:54 INFO  PluginTasksProjectComponent.projectClosing(188) - ---------- Project closed ----------
+
+2019-04-23 18:18:55 INFO  ApacheHttpClient.getTask(471) - responseCode = 200
+2019-04-23 18:27:16 INFO  PluginTasksProjectComponent.projectOpened(77) - ---------- Project opened ----------
+2019-04-23 18:27:16 INFO  PluginTasksProjectComponent.projectOpened(78) - ---------- Version 3.30 ----------
+
+2019-04-23 18:27:16 INFO  ApacheHttpClient.createAsyncHttpClient(135) - 1 proxies selected. Type: DIRECT
+2019-04-23 18:27:16 INFO  ApacheHttpClient.<init>(93) - ApacheHttpClient was successfully instantiated.
+2019-04-23 18:27:17 INFO  ApacheHttpClient.testConnection(193) - responseCode = 200
+2019-04-23 18:27:17 INFO  ApacheHttpClient.testConnection(208) - result = true
+2019-04-23 18:27:18 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(585) - Waiting for server response.
+2019-04-23 18:27:18 INFO  ApacheHttpClient.refreshUserInfo(293) - responseCode = 200
+2019-04-23 18:27:18 INFO  ApacheHttpClient.refreshUserInfo(299) - User information received.
+2019-04-23 18:27:18 INFO  ApacheHttpClient.startGA(35) - GAService started.
+2019-04-23 18:27:18 INFO  AbstractRestApiClient.startService(71) - EventsService started.
+2019-04-23 18:28:19 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-23 18:29:18 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-23 18:30:18 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-23 18:30:36 INFO  PluginTasksProjectComponent.projectClosing(188) - ---------- Project closed ----------
+
+2019-04-23 18:30:36 INFO  ApacheHttpClient.getTask(471) - responseCode = 200
+2019-04-24 14:09:41 INFO  PluginTasksProjectComponent.projectOpened(77) - ---------- Project opened ----------
+2019-04-24 14:09:41 INFO  PluginTasksProjectComponent.projectOpened(78) - ---------- Version 3.30 ----------
+
+2019-04-24 14:09:41 INFO  ApacheHttpClient.createAsyncHttpClient(135) - 1 proxies selected. Type: DIRECT
+2019-04-24 14:09:41 INFO  ApacheHttpClient.<init>(93) - ApacheHttpClient was successfully instantiated.
+2019-04-24 14:09:42 INFO  ApacheHttpClient.testConnection(193) - responseCode = 200
+2019-04-24 14:09:42 INFO  ApacheHttpClient.testConnection(208) - result = true
+2019-04-24 14:09:43 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(585) - Waiting for server response.
+2019-04-24 14:09:43 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(585) - Waiting for server response.
+2019-04-24 14:09:43 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(585) - Waiting for server response.
+2019-04-24 14:09:43 INFO  ApacheHttpClient.refreshUserInfo(293) - responseCode = 200
+2019-04-24 14:09:43 INFO  ApacheHttpClient.refreshUserInfo(299) - User information received.
+2019-04-24 14:09:43 INFO  ApacheHttpClient.startGA(35) - GAService started.
+2019-04-24 14:09:44 INFO  AbstractRestApiClient.startService(71) - EventsService started.
+2019-04-24 14:10:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:11:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:12:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
