@@ -8544,3 +8544,7 @@ java.net.UnknownHostException: javarush.ru
 2019-04-24 14:19:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
 2019-04-24 14:20:32 WARN  PluginUtil.getCurrentTask(71) - Error while retrieving the task key.
 2019-04-24 14:20:32 WARN  PluginUtil.getCurrentTask(71) - Error while retrieving the task key.
+2019-04-24 14:22:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:23:46 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:24:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-04-24 14:25:44 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
