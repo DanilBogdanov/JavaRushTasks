@@ -29,10 +29,11 @@ public class Solution {
         List<String> strings = new ArrayList<>(Arrays.asList(words));
         List<String> results = new ArrayList<>();
 
+        String stringRecursive;
         for (String string : strings) {
             List<String> list = new ArrayList<>(strings);
             list.remove(string);
-            String stringRecursive = string;
+            stringRecursive = string;
 
             results.addAll(recursion(list, stringRecursive));
         }
@@ -50,7 +51,7 @@ public class Solution {
         return new StringBuilder(stringResult);
     }
 
-    public static List<String> recursion (List<String> strings, String string) {
+    public static List<String> recursion(List<String> strings, String string) {
         List<String> result = new ArrayList<>();
 
         char lastChar = Character.toLowerCase(string.charAt(string.length() - 1));
