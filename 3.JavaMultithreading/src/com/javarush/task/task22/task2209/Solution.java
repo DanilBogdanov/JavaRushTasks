@@ -54,6 +54,8 @@ public class Solution {
     public static List<String> recursion(List<String> strings, String string) {
         List<String> result = new ArrayList<>();
 
+
+
         char lastChar = Character.toLowerCase(string.charAt(string.length() - 1));
         for (String s : strings) {
             char firstChar = Character.toLowerCase(s.charAt(0));
