@@ -12,6 +12,7 @@ import java.util.List;
 public class Solution {
     public static void main(String[] args) {
         String strings = "";
+
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String fileName = reader.readLine();
             BufferedReader fileReader = new BufferedReader(new FileReader(fileName));
