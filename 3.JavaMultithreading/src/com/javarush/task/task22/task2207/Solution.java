@@ -16,7 +16,7 @@ public class Solution {
     public static List<Pair> result = new LinkedList<>();
 
     public static void main(String[] args) {
-        //String fileName = "/home/danil/test/1.txt";//todo
+        //String fileName = "/home/danil/test/1.txt";
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             BufferedReader fileReader = new BufferedReader(new FileReader(reader.readLine()))) {
 
