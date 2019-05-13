@@ -28,7 +28,7 @@ public class KeyboardObserver extends Thread
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(new GridBagLayout());
 
-        frame.setOpacity(0.0f);
+        frame.setOpacity(1.0f);
         frame.setVisible(true);
 
         frame.addFocusListener(new FocusListener()
