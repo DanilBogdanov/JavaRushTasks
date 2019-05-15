@@ -110,18 +110,22 @@ public class Room {
 
         //Рисуем мышь
         matrix[mouse.getY()][mouse.getX()] = 3;
-
+        String result = "";
         //Выводим все это на экран
         String[] symbols = {" . ", " x ", " X ", "^_^", "RIP"};
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                System.out.print(symbols[matrix[y][x]]);
+                //System.out.print(symbols[matrix[y][x]]);
+                result += symbols[matrix[y][x]];
             }
-            System.out.println();
+            //System.out.println();
+            result += "\n";
         }
-        System.out.println();
-        System.out.println();
-        System.out.println();
+        //System.out.println();
+        //System.out.println();
+        //System.out.println();
+        result += "\n\n\n";
+        System.out.println(result);
     }
 
     /**
@@ -151,7 +155,6 @@ public class Room {
         game.run();
     }
 
-
     private int initialDelay = 520;
     private int delayStep = 20;
 
@@ -166,6 +169,4 @@ public class Room {
         } catch (InterruptedException e) {
         }
     }
-
-
 }
