@@ -10,8 +10,13 @@ public class Solution {
     }
 
     public static Solution[] getTwoSolutions() {
-
-        return null;
+        Solution sol1 = new Solution();
+        Solution sol2 = new Solution();
+        sol1.innerClasses[0] = sol1.new InnerClass();
+        sol1.innerClasses[1] = sol1.new InnerClass();
+        sol2.innerClasses[0] = sol2.new InnerClass();
+        sol2.innerClasses[1] = sol2.new InnerClass();
+        return new Solution[]{sol1, sol2};
     }
 
     public static void main(String[] args) {
