@@ -1,0 +1,14 @@
+﻿2019-04-12 12:47:47 INFO  JavaRushTasksProjectComponent.projectOpened(76) - ---------- Project JavaRushTasks opened ----------
+2019-04-12 12:47:47 INFO  JavaRushTasksProjectComponent.projectOpened(77) - ---------- Version 3.28 ----------
+
+2019-04-12 12:47:47 INFO  ApacheHttpClient.createAsyncHttpClient(130) - Выбрано 1 прокси. Тип : DIRECT
+2019-04-12 12:47:47 INFO  ApacheHttpClient.<init>(88) - ApacheHttpClient проинстанциирован успешно.
+2019-04-12 12:47:48 INFO  ApacheHttpClient.testConnection(188) - responseCode = 200
+2019-04-12 12:47:48 INFO  ApacheHttpClient.testConnection(203) - result = true
+2019-04-12 12:47:48 INFO  ApacheHttpClient.login(233) - Ожидание ответа сервера.
+2019-04-12 12:47:48 INFO  ApacheHttpClient.login(237) - responseCode = 200
+2019-04-12 12:47:48 INFO  ApacheHttpClient.login(268) - JSESSIONID OK
+2019-04-12 12:47:48 INFO  ApacheHttpClient.refreshUserInfo(296) - responseCode = 200
+2019-04-12 12:47:48 INFO  ApacheHttpClient.refreshUserInfo(302) - Информация о пользователе получена.
+2019-04-12 12:47:48 INFO  ApacheHttpClient.startGA(33) - GAService запущен.
+2019-04-12 12:47:48 INFO  AbstractRestApiClient.startService(70) - EventsService запущен.
