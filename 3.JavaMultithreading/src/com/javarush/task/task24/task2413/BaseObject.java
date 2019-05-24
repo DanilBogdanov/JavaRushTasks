@@ -33,6 +33,7 @@ public abstract class BaseObject {
         double sqrY = Math.pow(((Math.abs(o.getY() - this.getY()))), 2);
         double length = Math.sqrt(sqrX + sqrY);
 
+
         return length <= Math.max(radius, o.radius);
 
     }
