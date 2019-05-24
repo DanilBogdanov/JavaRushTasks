@@ -12,3 +12,37 @@
 2019-04-12 12:47:48 INFO  ApacheHttpClient.refreshUserInfo(302) - Информация о пользователе получена.
 2019-04-12 12:47:48 INFO  ApacheHttpClient.startGA(33) - GAService запущен.
 2019-04-12 12:47:48 INFO  AbstractRestApiClient.startService(70) - EventsService запущен.
+2019-05-24 15:31:08 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-05-24 15:31:18 INFO  ApacheHttpClient.getWebResourceAsStream(492) - responseCode = 200
+2019-05-24 15:31:21 INFO  JavaRushTasksProjectComponent.projectClosing(183) - ---------- Project JavaRushTasks closed ----------
+
+2019-05-24 15:31:30 INFO  PluginTasksProjectComponent.projectOpened(77) - ---------- Project opened ----------
+2019-05-24 15:31:30 INFO  PluginTasksProjectComponent.projectOpened(78) - ---------- Version 3.30 ----------
+
+2019-05-24 15:31:30 WARN  PluginTasksProjectComponent.setAutoscrolls(370) - Error while setting autoscrolls
+2019-05-24 15:31:30 INFO  ApacheHttpClient.createAsyncHttpClient(135) - 1 proxies selected. Type: DIRECT
+2019-05-24 15:31:31 INFO  ApacheHttpClient.<init>(93) - ApacheHttpClient was successfully instantiated.
+2019-05-24 15:31:31 INFO  ApacheHttpClient.testConnection(193) - responseCode = 200
+2019-05-24 15:31:31 INFO  ApacheHttpClient.testConnection(208) - result = true
+2019-05-24 15:31:31 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(572) - The session is not set in the property file.
+2019-05-24 15:31:32 INFO  ApacheHttpClient.login(238) - Waiting for server response.
+2019-05-24 15:31:32 INFO  ApacheHttpClient.login(242) - responseCode = 200
+2019-05-24 15:31:32 INFO  ApacheHttpClient.login(265) - JSESSIONID OK
+2019-05-24 15:31:32 INFO  ApacheHttpClient.refreshUserInfo(293) - responseCode = 200
+2019-05-24 15:31:32 INFO  ApacheHttpClient.refreshUserInfo(299) - User information received.
+2019-05-24 15:31:32 INFO  ApacheHttpClient.startGA(35) - GAService started.
+2019-05-24 15:31:32 INFO  AbstractRestApiClient.startService(71) - EventsService started.
+2019-05-24 15:31:57 INFO  ApacheHttpClient.getWebResourceAsStream(485) - responseCode = 200
+2019-05-24 15:31:58 INFO  ApacheHttpClient.getFilteredTasks(324) - responseCode = 200
+2019-05-24 15:37:02 INFO  ApacheHttpClient.getWebResourceAsStream(485) - responseCode = 200
+2019-05-24 15:37:04 INFO  ApacheHttpClient.getFilteredTasks(324) - responseCode = 200
+2019-05-24 15:37:07 INFO  ApacheHttpClient.getFilteredTasks(324) - responseCode = 200
+2019-05-24 15:37:21 INFO  ApacheHttpClient.getFilteredTasks(324) - responseCode = 200
+2019-05-24 15:37:23 INFO  ApacheHttpClient.getTaskTemplateInfo(341) - responseCode = 200
+2019-05-24 15:37:25 INFO  ApacheHttpClient.testConnection(193) - responseCode = 200
+2019-05-24 15:37:25 INFO  ApacheHttpClient.testConnection(208) - result = true
+2019-05-24 15:37:26 INFO  ApacheHttpClient.testConnection(193) - responseCode = 200
+2019-05-24 15:37:26 INFO  ApacheHttpClient.testConnection(208) - result = true
+2019-05-24 15:37:31 INFO  ApacheHttpClient.getWebResourceAsStream(485) - responseCode = 200
+2019-05-24 15:37:32 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-24 15:38:32 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
