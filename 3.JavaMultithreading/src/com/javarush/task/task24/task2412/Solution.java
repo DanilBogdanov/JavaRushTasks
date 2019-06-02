@@ -43,7 +43,24 @@ public class Solution {
     public static void sort(List<Stock> list) {
         list.sort(new Comparator<Stock>() {
             public int compare(Stock stock1, Stock stock2) {
-                return 0;
+                Comparator<Stock> nameComparator = Comparator.comparing(stock -> stock.get("name").toString());
+                Comparator<Stock> dateComparator = (stockDate1, stockDate2) -> {
+                    Date date1 = (Date) stockDate1.get("date");
+                    Date date2 = (Date) stockDate2.get("date");
+                    return (date2.getYear() - date1.getYear() != 0) ? date2.getYear() - date1.getYear() :
+                            (date2.getMonth() - date1.getMonth() != 0) ? date2.getMonth() - date1.getMonth() :
+                              date2.getDay() - date1.getDay();
+                };
+                Comparator<Stock> changeComparator = (stockChange1, stockChange2) -> {
+                    double change1 = (stockChange1.containsKey("change")) ? (double) stockChange1.get("change") :
+                            (double) stockChange1.get("last") - (double) stockChange1.get("open");
+                    double change2 = (stockChange2.containsKey("change")) ? (double) stockChange2.get("change") :
+                            (double) stockChange2.get("last") - (double) stockChange2.get("open");
+                    return (int) (change2 - change1);
+                } ;
+                Comparator<Stock> stockComparator = nameComparator.thenComparing(dateComparator).thenComparing(changeComparator);
+
+                return stockComparator.compare(stock1, stock2);
             }
         });
     }
