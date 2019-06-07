@@ -26,7 +26,7 @@ public class Solution {
                 wheelsMock.containsAll(Arrays.asList(Wheel.values()))) {
                 wheels = wheelsMock;
             } else {
-                throw new RuntimeException("fuck"); Thread
+                throw new RuntimeException("fuck");
             }
 
         }
