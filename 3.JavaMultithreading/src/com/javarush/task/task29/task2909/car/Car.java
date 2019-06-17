@@ -59,7 +59,7 @@ public abstract class Car {
         } else {
             return 0;
         }
-
+        
     }
 
     public boolean isDriverAvailable() {

@@ -16,6 +16,7 @@ public class Human implements Alive {
 
     public void setBloodGroup(BloodGroup bloodGroup) {
         this.bloodGroup = bloodGroup;
+
     }
 
     public BloodGroup getBloodGroup() {
