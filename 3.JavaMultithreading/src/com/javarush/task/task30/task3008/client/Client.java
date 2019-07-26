@@ -5,9 +5,9 @@ import com.javarush.task.task30.task3008.ConsoleHelper;
 import com.javarush.task.task30.task3008.Message;
 import com.javarush.task.task30.task3008.MessageType;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
 import java.io.IOException;
+import java.net.Socket;
 
 public class Client {
     protected Connection connection;
@@ -101,6 +101,69 @@ public class Client {
             }
         }
 
+        protected void clientHandshake() throws IOException, ClassNotFoundException {
 
+            while (true) {
+                Message message = connection.receive();
+
+                if (message.getType() == MessageType.NAME_REQUEST) {
+                    String userName = getUserName();
+                    Message newMessage = new Message(MessageType.USER_NAME, userName);
+                    connection.send(newMessage);
+                } else if (message.getType() == MessageType.NAME_ACCEPTED) {
+                    notifyConnectionStatusChanged(true);
+                    break;
+                } else {
+                    throw new IOException("Unexpected MessageType");
+                }
+            }
+
+        }
+
+        protected void clientMainLoop() throws IOException, ClassNotFoundException {
+            while (true) {
+                Message message = connection.receive();
+                if (message.getType() == null) {
+                    throw new IOException("Unexpected MessageType");
+                }
+                switch (message.getType()) {
+                    case TEXT: {
+                        processIncomingMessage(message.getData());
+                        break;
+                    }
+
+                    case USER_ADDED: {
+                        informAboutAddingNewUser(message.getData());
+                        break;
+                    }
+
+                    case USER_REMOVED: {
+                        informAboutDeletingNewUser(message.getData());
+                        break;
+                    }
+
+
+                    default: {
+                        throw new IOException("Unexpected MessageType");
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void run() {
+            try {
+                String address = getServerAddress();
+                int port = getServerPort();
+                Socket socket = new Socket(address, port);
+                Client.this.connection = new Connection(socket);
+
+                clientHandshake();
+                clientMainLoop();
+
+            } catch(IOException | ClassNotFoundException cl) {
+                notifyConnectionStatusChanged(false);
+            }
+        }
     }
 }
