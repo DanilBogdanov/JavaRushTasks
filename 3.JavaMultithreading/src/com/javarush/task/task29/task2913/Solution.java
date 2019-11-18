@@ -1,5 +1,7 @@
 package com.javarush.task.task29.task2913;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.Random;
 
@@ -29,6 +31,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
+        BigDecimal val = BigDecimal.valueOf(123);
+
         Random random = new Random();
         numberA = 0;
         numberB = 100000;
