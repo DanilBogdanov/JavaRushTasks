@@ -3,7 +3,7 @@ package com.javarush.task.task27.task2712.kitchen;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Cook implements Observer {
+public class Cook extends Observable implements Observer {
     private String name;
 
     public Cook(String name) {
@@ -16,8 +16,10 @@ public class Cook implements Observer {
     }
 
     public void update(Observable observable, Object arg) {
+        Order order = (Order) arg;
+        System.out.println("Start cooking - " + arg + ", cooking time " + order.getTotalCookingTime() + "min");
 
-
-        System.out.println("Start cooking - " + arg);
+        setChanged();
+        notifyObservers(arg);
     }
 }

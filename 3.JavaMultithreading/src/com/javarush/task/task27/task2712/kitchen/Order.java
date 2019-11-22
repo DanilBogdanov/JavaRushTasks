@@ -23,4 +23,17 @@ public class Order {
             return String.format("Your order: %s of %s", dishes, tablet);
         }
     }
+
+    public int getTotalCookingTime() {
+        int result = 0;
+        for (Dish dish : dishes) {
+            result += dish.getDuration();
+        }
+
+        return result;
+    }
+
+    public boolean isEmpty() {
+        return dishes.isEmpty();
+    }
 }
