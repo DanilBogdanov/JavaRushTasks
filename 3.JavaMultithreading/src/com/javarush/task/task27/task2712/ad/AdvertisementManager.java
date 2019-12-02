@@ -1,6 +1,9 @@
 package com.javarush.task.task27.task2712.ad;
 
 import com.javarush.task.task27.task2712.ConsoleHelper;
+import com.javarush.task.task27.task2712.statistic.StatisticManager;
+import com.javarush.task.task27.task2712.statistic.event.NoAvailableVideoEventDataRow;
+import com.javarush.task.task27.task2712.statistic.event.VideoSelectedEventDataRow;
 
 
 import java.util.ArrayList;
@@ -17,6 +20,9 @@ public class AdvertisementManager {
 
     public void processVideos() {
         if (storage.list().isEmpty()) {
+            NoAvailableVideoEventDataRow noAvailableVideoEventDataRow =
+                    new NoAvailableVideoEventDataRow(timeSeconds);
+            StatisticManager.getInstance().register(noAvailableVideoEventDataRow);
             throw new NoVideoAvailableException();
         }
 
@@ -26,6 +32,12 @@ public class AdvertisementManager {
         List<Advertisement> listToShow = listOfAvailableVariables.get(0);
         sortListToShow(listToShow);
 
+        if (listToShow.size() > 0) {
+            VideoSelectedEventDataRow event = new VideoSelectedEventDataRow(listToShow, getAmountOfSetVideos(listToShow),
+                    getDurationOfSetVideos(listToShow));
+            StatisticManager.getInstance().register(event);
+        }
+
         for (Advertisement ad : listToShow) {
             ConsoleHelper.writeMessage(ad.toString());
             ad.revalidate();
@@ -33,7 +45,25 @@ public class AdvertisementManager {
 
     }
 
+    private long getAmountOfSetVideos(List<Advertisement> list) {
+        long result = 0;
 
+        for (Advertisement ad : list) {
+            result += ad.getAmountPerOneDisplaying();
+        }
+
+        return result;
+    }
+
+    private int getDurationOfSetVideos(List<Advertisement> list) {
+        int result = 0;
+
+        for (Advertisement ad : list) {
+            result += ad.getDuration();
+        }
+
+        return result;
+    }
 
     private List<List<Advertisement>> getAvailableVariables(List<Advertisement> sourceList) {
         List<List<Advertisement>> result = new ArrayList<>();
@@ -121,19 +151,5 @@ public class AdvertisementManager {
     }
 
 
-    //todo========================
-    public static void main(String[] args) {
-        AdvertisementStorage storage = AdvertisementStorage.getInstance();
-        AdvertisementManager manager = new AdvertisementManager(60 * 30);
-        AdvertisementManager manager1 = new AdvertisementManager(60 * 30);
-        AdvertisementManager manager2 = new AdvertisementManager(60 * 30);
 
-        manager.processVideos();
-        System.out.println();
-        manager1.processVideos();
-        System.out.println();
-        manager2.processVideos();
-        System.out.println();
-        manager2.processVideos();
-    }
 }

@@ -15,6 +15,10 @@ public class Order {
         dishes = ConsoleHelper.getAllDishesForOrder();
     }
 
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
     @Override
     public String toString() {
         if (dishes == null || dishes.size() == 0) {
@@ -31,6 +35,10 @@ public class Order {
         }
 
         return result;
+    }
+
+    public Tablet getTablet() {
+        return tablet;
     }
 
     public boolean isEmpty() {
