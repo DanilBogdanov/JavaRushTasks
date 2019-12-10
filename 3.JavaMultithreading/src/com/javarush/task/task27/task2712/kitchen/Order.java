@@ -4,6 +4,9 @@ import com.javarush.task.task27.task2712.ConsoleHelper;
 import com.javarush.task.task27.task2712.Tablet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Order {
@@ -13,6 +16,7 @@ public class Order {
     public Order(Tablet tablet) throws IOException{
         this.tablet = tablet;
         dishes = ConsoleHelper.getAllDishesForOrder();
+        //dishes = new ArrayList<>(Arrays.asList(Dish.values()));
     }
 
     public List<Dish> getDishes() {
