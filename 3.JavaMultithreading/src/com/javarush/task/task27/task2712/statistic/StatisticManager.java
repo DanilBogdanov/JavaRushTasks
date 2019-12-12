@@ -63,6 +63,7 @@ public class StatisticManager {
         return resultMap;
     }
 
+    //return time in seconds
     public Map<Date, Map<String, Integer>> getCooksTimingDaily() {
         Map<Date, Map<String, Integer>> resultMap = new HashMap<>();
 

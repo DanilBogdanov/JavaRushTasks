@@ -32,6 +32,7 @@ public class DirectorTablet {
     }
 
     public void printCookWorkloading() {
+        StringBuffer message = new StringBuffer();
         Map<Date, Map<String, Integer>> cooksDailyMap = StatisticManager.getInstance().getCooksTimingDaily();
 
         List<Date> dateList = new ArrayList<>(cooksDailyMap.keySet());
@@ -46,11 +47,30 @@ public class DirectorTablet {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
         for (Date date : dateList) {
-            ConsoleHelper.writeMessage(dateFormat.format(date));
-            Map<String, Integer> cooksMap = cooksDailyMap.get(date);
+            if (message.length() > 0) {
+                message.append("\n");
+            }
 
+            message.append(dateFormat.format(date) + "\n");
+            Map<String, Integer> cooksMap = cooksDailyMap.get(date);
+            List<String> keyList = new ArrayList<>(cooksMap.keySet());
+            keyList.sort(new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    return o1.compareTo(o2);
+                }
+            });
+
+            //Math.ceil() in big
+            for (String cookName : keyList) {
+                //int cookTime = (int) Math.ceil(cooksMap.get(cookName) / 60.0);
+                int cookTime = cooksMap.get(cookName) ;
+                message.append(String.format("%s - %d min", cookName, cookTime));
+                message.append("\n");
+            }
         }
 
+        ConsoleHelper.writeMessage(message.toString());
     }
 
     public void printActiveVideoSet() {
