@@ -1,5 +1,7 @@
 package com.javarush.task.task27.task2712;
 
+import com.javarush.task.task27.task2712.ad.Advertisement;
+import com.javarush.task.task27.task2712.ad.StatisticAdvertisementManager;
 import com.javarush.task.task27.task2712.statistic.StatisticManager;
 
 
@@ -7,6 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class DirectorTablet {
+    private Comparator<Advertisement> advertisementComparator = new Comparator<Advertisement>() {
+        @Override
+        public int compare(Advertisement o1, Advertisement o2) {
+            return o1.getName().compareToIgnoreCase(o2.getName());
+        }};
+
     public void printAdvertisementProfit() {
 
         Map<Date, Long> map = StatisticManager.getInstance().getDateAmount();
@@ -74,11 +82,21 @@ public class DirectorTablet {
     }
 
     public void printActiveVideoSet() {
+        List<Advertisement> activeVideoList = StatisticAdvertisementManager.getInstance().getActiveVideo();
+        activeVideoList.sort(advertisementComparator);
 
+        for (Advertisement ad : activeVideoList) {
+            ConsoleHelper.writeMessage(String.format("%s - %s", ad.getName(), ad.getHits()));
+        }
     }
 
     public void printArchivedVideoSet() {
+        List<Advertisement> archiveVideoList = StatisticAdvertisementManager.getInstance().getArchivedVideo();
+        archiveVideoList.sort(advertisementComparator);
 
+        for (Advertisement ad : archiveVideoList) {
+            ConsoleHelper.writeMessage(ad.getName());
+        }
     }
 
     public static void main(String[] args) {
@@ -86,5 +104,7 @@ public class DirectorTablet {
         tab.printAdvertisementProfit();
 
     }
+
+
 
 }

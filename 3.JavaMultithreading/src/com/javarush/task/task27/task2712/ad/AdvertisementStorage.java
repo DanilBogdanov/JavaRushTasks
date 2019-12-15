@@ -20,6 +20,8 @@ public class AdvertisementStorage {
         add(new Advertisement(someObject, "first", 5000, 100, 3 * 60));
         add(new Advertisement(someObject, "second", 100, 10, 15 * 60));
         add(new Advertisement(someObject, "third", 400, 2, 10 * 60));
+        add(new Advertisement(someObject, "четвертое видео", 300, 3, 4*60));
+        add(new Advertisement(someObject, "fifth видео", 300, 0, 4*60));
     }
 
     private final List<Advertisement> videos = new ArrayList<>();
