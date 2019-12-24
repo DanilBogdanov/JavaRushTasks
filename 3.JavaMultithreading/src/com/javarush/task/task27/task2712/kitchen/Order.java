@@ -14,9 +14,9 @@ public class Order {
     protected List<Dish> dishes;
 
     public Order(Tablet tablet) throws IOException{
+        initDishes();
         this.tablet = tablet;
-        dishes = ConsoleHelper.getAllDishesForOrder();
-        //dishes = new ArrayList<>(Arrays.asList(Dish.values()));
+
     }
 
     public List<Dish> getDishes() {
@@ -47,5 +47,9 @@ public class Order {
 
     public boolean isEmpty() {
         return dishes.isEmpty();
+    }
+
+    protected void initDishes() throws IOException {
+        dishes = ConsoleHelper.getAllDishesForOrder();
     }
 }

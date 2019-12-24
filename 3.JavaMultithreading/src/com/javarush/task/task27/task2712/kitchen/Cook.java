@@ -6,8 +6,13 @@ import com.javarush.task.task27.task2712.statistic.event.CookedOrderEventDataRow
 import java.util.Observable;
 import java.util.Observer;
 
-public class Cook extends Observable implements Observer {
+public class Cook extends Observable{
     private String name;
+    private boolean busy = false;
+
+    public boolean isBusy() {
+        return busy;
+    }
 
     public Cook(String name) {
         this.name = name;
@@ -18,15 +23,26 @@ public class Cook extends Observable implements Observer {
         return name;
     }
 
-    public void update(Observable observable, Object arg) {
-        Order order = (Order) arg;
-        System.out.println("Start cooking - " + arg + ", cooking time " + order.getTotalCookingTime() + "min");
+    public void startCookingOrder(Order order) {
+        busy = true;
+        System.out.println("Start cooking - " + order + ", cooking time " + order.getTotalCookingTime() + "min");
 
         setChanged();
-        notifyObservers(arg);
+        notifyObservers(order);
+
+        try {
+            int delay = order.getTotalCookingTime() * 10;
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+
+        }
 
         CookedOrderEventDataRow cookedOrderEventDataRow = new CookedOrderEventDataRow(order.getTablet().toString(),
                 name, order.getTotalCookingTime(), order.getDishes());
         StatisticManager.getInstance().register(cookedOrderEventDataRow);
+
+        //imitation of delay
+
+        busy = false;
     }
 }
