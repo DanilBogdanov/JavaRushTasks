@@ -6,13 +6,18 @@ import com.javarush.task.task27.task2712.kitchen.Order;
 import com.javarush.task.task27.task2712.kitchen.TestOrder;
 
 import java.io.IOException;
-import java.util.Observable;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Tablet extends Observable {
+public class Tablet {
     private final int number;
     private static Logger logger = Logger.getLogger(Tablet.class.getName());
+    private LinkedBlockingQueue<Order> queue;
+
+    public void setQueue(LinkedBlockingQueue<Order> queue) {
+        this.queue = queue;
+    }
 
     public Tablet(int number) {
         this.number = number;
@@ -23,6 +28,11 @@ public class Tablet extends Observable {
 
         try {
             order = new Order(this);
+            try {
+                queue.put(order);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             refactorMetod(order);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Console is unavailable.");
@@ -35,8 +45,6 @@ public class Tablet extends Observable {
 
     private void refactorMetod(Order order) {
         if (!order.isEmpty()) {
-            setChanged();
-            notifyObservers(order);
             AdvertisementManager manager = new AdvertisementManager(order.getTotalCookingTime() * 60);
             manager.processVideos();
         }

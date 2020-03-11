@@ -3,36 +3,39 @@ package com.javarush.task.task27.task2712;
 import com.javarush.task.task27.task2712.kitchen.Cook;
 import com.javarush.task.task27.task2712.kitchen.Order;
 import com.javarush.task.task27.task2712.kitchen.Waiter;
-import com.javarush.task.task27.task2712.statistic.StatisticManager;
-import com.javarush.task.task27.task2712.statistic.event.CookedOrderEventDataRow;
-import com.javarush.task.task27.task2712.statistic.event.EventDataRow;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Restaurant {
-    private static final int ORDER_CREATING_INTERVAL = 100;
+    private final static int ORDER_CREATING_INTERVAL = 100;
+    private final static LinkedBlockingQueue<Order> orderQueue = new LinkedBlockingQueue<>();
 
     public static void main(String[] args) {
         List<Tablet> tablets = new ArrayList<>();
-        OrderManager orderManager = new OrderManager();
 
         Waiter waiter = new Waiter();
 
         Cook cook = new Cook("Amigo");
+        cook.setQueue(orderQueue);
         cook.addObserver(waiter);
+        Thread cookThread = new Thread(cook);
+        cookThread.setDaemon(true);
+        cookThread.start();
+
         Cook cook2 = new Cook("Bilabo");
+        cook2.setQueue(orderQueue);
         cook2.addObserver(waiter);
+        Thread cookThread2 = new Thread(cook2);
+        cookThread2.setDaemon(true);
+        cookThread2.start();
 
         for (int i = 0; i < 5; i++) {
             Tablet tablet = new Tablet(i);
-            tablet.addObserver(orderManager);
+            tablet.setQueue(orderQueue);
             tablets.add(tablet);
         }
-
-        StatisticManager.getInstance().register(cook);
-        StatisticManager.getInstance().register(cook2);
 
         RandomOrderGeneratorTask task = new RandomOrderGeneratorTask(tablets, ORDER_CREATING_INTERVAL);
         Thread thread = new Thread(task);

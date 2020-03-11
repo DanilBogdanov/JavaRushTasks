@@ -11,11 +11,6 @@ import java.util.*;
 public class StatisticManager {
     private static volatile StatisticManager instance;
     private StatisticStorage statisticStorage = new StatisticStorage();
-    private Set<Cook> cooks = new HashSet<>();
-
-    public Set<Cook> getCooks() {
-        return cooks;
-    }
 
     private StatisticManager() {
         
@@ -35,10 +30,6 @@ public class StatisticManager {
 
     public void register(EventDataRow data) {
         statisticStorage.put(data);
-    }
-
-    public void register(Cook cook) {
-        cooks.add(cook);
     }
 
     public Map<Date, Long> getDateAmount() {
