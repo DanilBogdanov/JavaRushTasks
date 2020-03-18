@@ -45,8 +45,6 @@ public class Tile {
 
     @Override
     public String toString() {
-        return "Tile{" +
-                "value=" + value +
-                '}';
+        return value + "\t";
     }
 }
