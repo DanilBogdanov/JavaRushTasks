@@ -15,6 +15,27 @@ public class Model {
         return gameTiles;
     }
 
+    boolean canMove() {
+        for (Tile[] tiles : gameTiles) {
+            for (Tile tile : tiles) {
+                if (tile.value == 0) {
+                    return true;
+                }
+            }
+        }
+
+        for (int i = 0; i < FIELD_WIDTH - 1; i++) {
+            for (int j = 0; j < FIELD_WIDTH - 1; j++) {
+                if (gameTiles[i][j].value == gameTiles[i][j + 1].value
+                        || gameTiles[j][i].value == gameTiles[j + 1][i].value) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public Model() {
         resetGameTiles();
     }
