@@ -1,5 +1,8 @@
 package com.javarush.task.task35.task3513;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class View extends JPanel {
     private static final Color BG_COLOR = new Color(0xbbada0);
     private static final String FONT_NAME = "Arial";
