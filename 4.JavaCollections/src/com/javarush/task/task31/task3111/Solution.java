@@ -1,9 +1,7 @@
 package com.javarush.task.task31.task3111;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.List;
 
 /* 
@@ -12,7 +10,13 @@ import java.util.List;
 public class Solution {
 
     public static void main(String[] args) throws IOException {
-        SearchFileVisitor searchFileVisitor = new SearchFileVisitor();
+        Path path = Paths.get("/home/danil/test");
+        FileVisitor fileVisitor = new MyFileVisitor();
+
+        Files.walkFileTree(path, fileVisitor);
+
+
+        /*SearchFileVisitor searchFileVisitor = new SearchFileVisitor();
 
         searchFileVisitor.setPartOfName("amigo");
         searchFileVisitor.setPartOfContent("programmer");
@@ -24,7 +28,7 @@ public class Solution {
         List<Path> foundFiles = searchFileVisitor.getFoundFiles();
         for (Path file : foundFiles) {
             System.out.println(file);
-        }
+        }*/
     }
 
 }
