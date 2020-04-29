@@ -19,6 +19,41 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
         return size;
     }
 
+    //include fist element
+    private int getSizeOfEntry(Entry entry) {
+        List<Entry> parentEntries = new ArrayList<>();
+        List<Entry> branchesEntries = new ArrayList<>();
+
+        if (entry == null) {
+            return 0;
+        }
+        int count = 1;
+
+        if (entry.leftChild != null) {
+            parentEntries.add(root.leftChild);
+        }
+        if (entry.rightChild != null) {
+            parentEntries.add(root.rightChild);
+        }
+
+        while (!parentEntries.isEmpty()) {
+            for (CustomTree.Entry e : parentEntries) {
+                count++;
+
+                if (e.leftChild != null) {
+                    branchesEntries.add(e.leftChild);
+                }
+                if (e.rightChild != null) {
+                    branchesEntries.add(e.rightChild);
+                }
+            }
+
+            parentEntries = new ArrayList<>(branchesEntries);
+            branchesEntries.clear();
+        }
+        return count;
+    }
+
     @Override
     public String get(int index) {
         throw new UnsupportedOperationException();
@@ -53,16 +88,59 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
                 }
 
                 //add branches from root
-                branchEntry.add(entry.leftChild);
-                branchEntry.add(entry.rightChild);
+                if (entry.leftChild != null) {
+                    branchEntry.add(entry.leftChild);
+                }
+                if (entry.rightChild != null) {
+                    branchEntry.add(entry.rightChild);
+                }
             }
 
             //If didn't find free an entry to add, then get all branches from root
             rootEntry = new ArrayList<>(branchEntry);
             branchEntry.clear();
+
+            if (rootEntry.size() == 0) {
+                rootEntry.add(root);
+                fixRoot();
+            }
         }
 
         return true;
+    }
+
+    private void fixRoot() {
+        List<Entry> parentEntries = new ArrayList<>();
+        List<Entry> branchesEntries = new ArrayList<>();
+
+        if (root.leftChild != null) {
+            parentEntries.add(root.leftChild);
+        }
+        if (root.rightChild != null) {
+            parentEntries.add(root.rightChild);
+        }
+
+        while (!parentEntries.isEmpty()) {
+            for (CustomTree.Entry entry : parentEntries) {
+                if (!entry.isAvailableToAddChildren() &&
+                        (entry.leftChild == null && entry.rightChild == null)) {
+                    entry.availableToAddLeftChildren = true;
+                    entry.availableToAddRightChildren = true;
+                    return;
+                }
+
+                if (entry.leftChild != null) {
+                    branchesEntries.add(entry.leftChild);
+                }
+                if (entry.rightChild != null) {
+                    branchesEntries.add(entry.rightChild);
+                }
+            }
+
+            parentEntries = new ArrayList<>(branchesEntries);
+            branchesEntries.clear();
+        }
+
     }
 
     public String getParent(String value) {
@@ -129,6 +207,66 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
     public CustomTree() {
         this.root = new Entry<String>("0");
     }
+
+    public boolean remove(Object o) {
+        if (!(o instanceof String)) {
+            throw new UnsupportedOperationException();
+        }
+
+        String elementName = (String) o;
+        Entry<String> removeEntry = findElement(elementName);
+        if (removeEntry == null) {
+            return false;
+        }
+
+        //size -= getSizeOfEntry(removeEntry);
+
+        Entry parent = removeEntry.parent;
+
+        if (parent.leftChild == removeEntry) {
+            parent.leftChild = null;
+            //parent.availableToAddLeftChildren = true;
+        } else {
+            parent.rightChild = null;
+            //parent.availableToAddRightChildren = true;
+        }
+
+        size = getSizeOfEntry(root) - 1;
+        return true;
+    }
+
+    //return first finded element
+    private Entry<String> findElement(String elementName) {
+        List<Entry> parentEntries = new ArrayList<>();
+        List<Entry> branchesEntries = new ArrayList<>();
+
+        if (root.leftChild != null) {
+            parentEntries.add(root.leftChild);
+        }
+        if (root.rightChild != null) {
+            parentEntries.add(root.rightChild);
+        }
+
+        while (!parentEntries.isEmpty()) {
+            for (CustomTree.Entry entry : parentEntries) {
+                if (entry.elementName.equals(elementName)) {
+                    return entry;
+                }
+
+                if (entry.leftChild != null) {
+                    branchesEntries.add(entry.leftChild);
+                }
+                if (entry.rightChild != null) {
+                    branchesEntries.add(entry.rightChild);
+                }
+            }
+
+            parentEntries = new ArrayList<>(branchesEntries);
+            branchesEntries.clear();
+        }
+        return null;
+    }
+
 
     static class Entry<T> implements Serializable {
         String elementName;
