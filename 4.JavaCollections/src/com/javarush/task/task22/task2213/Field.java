@@ -1,28 +1,9 @@
 package com.javarush.task.task22.task2213;
 
+import java.util.ArrayList;
+
 /**
  * Класс Field описывает "поле клеток" игры Тетрис
- * Напиши реализацию метода removeFullLines в классе Field.
- * Надо:
- * а) удалить все строки из матрицы, которые полностью заполнены (состоят из одних единиц);
- * б) сместить оставшиеся строки вниз;
- * в) создать новые строки взамен отсутствующих.
- *
- * ВАЖНО!
- * matrix[y][x] содержит элемент с координатами (x,y).
- * matrix[i] содержит i-ю строку.
- * Мы можем:
- * а) удалить стоку:
- * matrix[i] = null
- * б) скопировать [ссылку на] строку:
- * matrix[i+1] = matrix[i];
- * в) создать новую строку:
- * matrix[i] = new int[width];
- *
- *
- * Требования:
- * 1. После выполнения метода removeFullLines в массиве matrix не должно остаться строк состоящих из одних единиц.
- * 2. Оставшиеся строки должны быть корректно перемещены, а вместо отсутствующих добавлены новые.
  */
 public class Field {
     //ширина и высота
@@ -32,7 +13,7 @@ public class Field {
     //матрица поля: 1 - клетка занята, 0 - свободна
     private int[][] matrix;
 
-    public Field(int height, int width) {
+    public Field(int width, int height) {
         this.width = width;
         this.height = height;
         matrix = new int[height][width];
@@ -124,10 +105,28 @@ public class Field {
      * Удаляем заполненные линии
      */
     public void removeFullLines() {
-        //Например так:
         //Создаем список для хранения линий
+        ArrayList<int[]> lines = new ArrayList<int[]>();
+
         //Копируем все непустые линии в список.
+        for (int i = 0; i < height; i++) {
+            //подсчитываем количество единиц в строке - просто суммируем все ее значения
+            int count = 0;
+            for (int j = 0; j < width; j++) {
+                count += matrix[i][j];
+            }
+
+            //Если сумма строки не равна ее ширине - добавляем в список
+            if (count != width)
+                lines.add(matrix[i]);
+        }
+
         //Добавляем недостающие строки в начало списка.
+        while (lines.size() < height) {
+            lines.add(0, new int[width]);
+        }
+
         //Преобразуем список обратно в матрицу
+        matrix = lines.toArray(new int[height][width]);
     }
 }
