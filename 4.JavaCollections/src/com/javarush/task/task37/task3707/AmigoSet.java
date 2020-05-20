@@ -67,7 +67,8 @@ public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneab
 
     private void writeObject(ObjectOutputStream stream) throws IOException {
         stream.defaultWriteObject();
-        stream.writeObject(map.keySet());
+        Set<E> setToSeril = new HashSet<>(map.keySet());
+        stream.writeObject(setToSeril);
         int capacity = (int) HashMapReflectionHelper.callHiddenMethod(map, "capacity");
         stream.writeInt(capacity);
         float loadFactor = (float) HashMapReflectionHelper.callHiddenMethod(map, "loadFactor");
@@ -77,13 +78,40 @@ public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneab
 
     private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
         stream.defaultReadObject();
+        Set<E> set = (Set<E>) stream.readObject();
         int capacity = stream.readInt();
         float loadFactor = stream.readFloat();
-        this.map = new HashMap<>(capacity, loadFactor);
+        map = new HashMap<>(capacity, loadFactor);
+        for (E object : set) {
+            map.put(object, PRESENT);
+        }
+
         stream.close();
     }
 
     public static void main(String[] args) throws Exception {
+        AmigoSet<Integer> firstSet = new AmigoSet<>();
+        firstSet.add(1);
+        firstSet.add(2);
+        firstSet.add(3);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(firstSet);
+        firstSet.clear();
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bais);
+        AmigoSet<Integer> secondSet = (AmigoSet<Integer>) ois.readObject();
+
+        System.out.println("first set");
+        for (Integer integer : firstSet) {
+            System.out.println("\t" + integer);
+        }
+        System.out.println("\nsecond set");
+        for (Integer integer : secondSet) {
+            System.out.println("\t" + integer);
+        }
 
     }
 }
