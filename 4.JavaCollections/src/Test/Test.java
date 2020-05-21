@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Test {
@@ -15,7 +17,23 @@ public class Test {
         logger.debug("main ");
         logger.info("string");
         logger.error("aad");
+        A<Number> a = new A<>();
 
+        C c = new C();
+
+        a.t = 3;
+        a.method("method");
 
     }
+
+    static class A<T> {
+        T t;
+
+        <TR>TR method (TR tt) {
+
+            return tt;
+        }
+    }
+
+    static class C extends A {}
 }
