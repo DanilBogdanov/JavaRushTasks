@@ -89,4 +89,6 @@ public abstract class BaseObject {
         double destination2 = Math.max(radius, o.radius);
         return destination <= destination2;
     }
+
+
 }
