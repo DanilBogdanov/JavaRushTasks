@@ -17,22 +17,12 @@ public class Test {
     private static final Logger logger = LoggerFactory.getLogger(Test.class);
 
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("/home/danil/");
-
-        for (Path p : Files.newDirectoryStream(path)){
-            System.out.println(p.toString());
-        }
-
-        m(new Cl<String>(), new Cl<>());
+        Long l1 = new Long(1);
+        Long l2 = new Long(1);
+        System.out.println(l1 == l2);
+        System.out.println(l1.equals(l2));
 
     }
 
-    static class Cl<T> {
-
-
-    }
-
-    static <T> void m(Cl<T> ... a) {
-    }
 
 }
