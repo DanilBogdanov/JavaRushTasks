@@ -1,7 +1,6 @@
 package com.javarush.task.task33.task3310.strategy;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Entry implements Serializable {
     Long key;
@@ -48,6 +47,4 @@ public class Entry implements Serializable {
         Entry entry = (Entry) obj;
         return (this.key.equals(entry.key) && (this.value.equals(entry.value)));
     }
-
-
 }
