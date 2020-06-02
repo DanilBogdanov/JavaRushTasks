@@ -115,9 +115,9 @@ public class Solution {
             }
         }
 
-        //startLoop = new Date(); //TODO START
-        //stopLoop = new Date();//TODO STOP
-        //timeOfLoop += (stopLoop.getTime() - startLoop.getTime());//TODO ALSO STOP
+        //startLoop = new Date(); //
+        //stopLoop = new Date();//
+        //timeOfLoop += (stopLoop.getTime() - startLoop.getTime());//T
         System.out.println(timeOfLoop / 1000 + "sec of loop");
         System.out.println("*********Stop Parsing**********");
 

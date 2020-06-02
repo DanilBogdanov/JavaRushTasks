@@ -27,7 +27,7 @@ public class Solution {
 
             matchLists(firstList, secondList, lines);
 
-            //printLines(lines);//TODO delete before check
+            //printLines(lines);// delete before check
         } catch (IOException e) {
 
         }

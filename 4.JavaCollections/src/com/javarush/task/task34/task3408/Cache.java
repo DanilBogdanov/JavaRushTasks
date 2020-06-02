@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 public class Cache<K, V> {
-    private Map<K, V> cache = new WeakHashMap<>();   //TODO add your code here
+    private Map<K, V> cache = new WeakHashMap<>();   //T
 
     public V getByKey(K key, Class<V> clazz) throws Exception {
-        //TODO add your code here
+        //
         V reference = cache.get(key);
         if (reference == null) {
             Constructor<V> constructor = clazz.getDeclaredConstructor(key.getClass());
@@ -26,7 +26,7 @@ public class Cache<K, V> {
     }
 
     public boolean put(V obj) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        //TODO add your code here
+        //
         try {
             Method method = obj.getClass().getDeclaredMethod("getKey");
             method.setAccessible(true);

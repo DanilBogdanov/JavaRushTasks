@@ -17,7 +17,7 @@ public class Solution {
         protected List<Wheel> wheels;
 
         public Car() {
-            //todo wheels = new ArrayList<>();
+            //
             ArrayList<Wheel> wheelsMock = new ArrayList<>();
             for (String wheel : loadWheelNamesFromDB()) {
                 wheelsMock.add(Wheel.valueOf(wheel));

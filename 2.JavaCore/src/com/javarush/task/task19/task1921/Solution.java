@@ -45,7 +45,7 @@ public class Solution {
 
             while (matcher.find()) {
                 name = matcher.group(1).trim();
-                //System.out.println(name);//TODO
+                //System.out.println(name);//
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MM yyyy", Locale.ENGLISH);
                 String stringDate = matcher.group(2).trim();
                  birthDate = simpleDateFormat.parse(stringDate);
