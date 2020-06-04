@@ -53,9 +53,12 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        testStrategy(new HashMapStorageStrategy(), 10_000);
-        testStrategy(new OurHashMapStorageStrategy(), 10_000);
-        testStrategy(new FileStorageStrategy(), 10);
-        testStrategy(new OurHashBiMapStorageStrategy(), 10_000);
+        int countOfTests = 50_000;
+        //testStrategy(new HashMapStorageStrategy(), countOfTests);
+        //testStrategy(new OurHashMapStorageStrategy(), countOfTests);
+        //testStrategy(new FileStorageStrategy(), 10);
+        testStrategy(new OurHashBiMapStorageStrategy(), countOfTests);
+        testStrategy(new HashBiMapStorageStrategy(), countOfTests);
+        testStrategy(new DualHashBidiMapStorageStrategy(), countOfTests);
     }
 }
