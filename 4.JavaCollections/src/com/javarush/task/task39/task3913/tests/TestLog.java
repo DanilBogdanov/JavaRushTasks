@@ -7,12 +7,12 @@ import com.javarush.task.task39.task3913.Status;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TestLog {
     private static Date after = new Date();
@@ -22,23 +22,14 @@ public class TestLog {
 
 
     static {
-        after.setYear(after.getYear() - 1);
-        before.setYear(before.getYear() + 1);
+        after.setYear(after.getYear() - 100);
+        before.setYear(before.getYear() + 100);
     }
 
     public static void main(String[] args) throws Exception{
-        try {
 
-            LogParser parser = new LogParser(pathToLogs);
-            Set<String> ips = parser.getUniqueIPs(null, null);
-            for (String s : ips) {
-                System.out.println(s);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+        Event event = Event.valueOf("DONE_TASK");
+        System.out.println(event);
     }
 
     @Test

@@ -11,12 +11,29 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 //127.0.0.1	Amigo	30.08.2012 16:08:13	LOGIN	OK
+/**
+ * Где:
+ * ip - ip адрес с которого пользователь произвел событие.
+ * user - имя пользователя (одно или несколько слов разделенные пробелами).
+ * date - дата события в формате day.month.year hour:minute:second.
+ * event - одно из событий:
+ * LOGIN - пользователь залогинился,
+ * DOWNLOAD_PLUGIN - пользователь скачал плагин,
+ * WRITE_MESSAGE - пользователь отправил сообщение,
+ * SOLVE_TASK - пользователь попытался решить задачу,
+ * DONE_TASK - пользователь решил задачу.
+ * Для событий SOLVE_TASK и DONE_TASK существует дополнительный параметр,
+ * который указывается через пробел, это номер задачи.
+ * status - статус:
+ * OK - событие выполнилось успешно,
+ * FAILED - событие не выполнилось,
+ * ERROR - произошла ошибка.*/
 public class Log {
     private String ip;
     private String name;
     private Date date;
     private Event event;
-    private int task;
+    private Integer task;
     private Status status;
 
     public String getIp() {
@@ -35,7 +52,7 @@ public class Log {
         return event;
     }
 
-    public int getTask() {
+    public Integer getTask() {
         return task;
     }
 
