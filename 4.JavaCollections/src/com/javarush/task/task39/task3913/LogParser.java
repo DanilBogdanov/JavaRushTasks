@@ -44,13 +44,15 @@ public class LogParser implements IPQuery, UserQuery, DateQuery, EventQuery, QLQ
         if (after != null) {
             try {
                 afterDate = format.parse(after);
+                //afterDate.setTime(afterDate.getTime()  + 1);
             } catch (ParseException e) {
 
             }
         }
         if (before != null) {
             try {
-                beforeDate = format.parse(after);
+                beforeDate = format.parse(before);
+                //beforeDate.setTime(beforeDate.getTime() - 1);
             } catch (ParseException e) {
 
             }
@@ -63,14 +65,21 @@ public class LogParser implements IPQuery, UserQuery, DateQuery, EventQuery, QLQ
         if ("date".equals(fieldPar)) {
             try {
                 date = format.parse(value);
+
             } catch (ParseException e) {
-                e.printStackTrace();
+
             }
         }
         Event event = ("event".equals(fieldPar)) ? Event.valueOf(value) : null;
         Status status = ("status".equals(fieldPar)) ? Status.valueOf(value) : null;
 
-        List<Log> logs = getLogs(afterDate, beforeDate, ip, user, event, null, status);
+        List<Log> logs;
+        logs = getLogs(afterDate, beforeDate, date, ip, user, event, null, status);
+//        if (date != null) {
+//            logs = getLogs(date, ip, user, event, null, status);
+//        } else {
+//            logs = getLogs(afterDate, beforeDate, ip, user, event, null, status);
+//        }
 
 
         switch (param) {
@@ -108,17 +117,6 @@ public class LogParser implements IPQuery, UserQuery, DateQuery, EventQuery, QLQ
         return null;
     }
 
-
-
-    private Set<Status> getStatuses() {
-        List<Log> logs = getLogs(null, null, null, null, null, null, null);
-        Set<Status> statuses = new HashSet<>();
-        for (Log log : logs) {
-            statuses.add(log.getStatus());
-        }
-        return statuses;
-    }
-
     private Set<String> getUsers(Date after, Date before, String ip, String name,
                                  Event event, Integer task, Status status) {
         List<Log> logs = getLogs(after, before, ip, name, event, task, status);
@@ -136,6 +134,25 @@ public class LogParser implements IPQuery, UserQuery, DateQuery, EventQuery, QLQ
         List<Log> filteredLogs = new ArrayList<>();
         for (Log log : logs) {
             if (log.checkDate(after, before) &&
+                    (ip == null || ip.equals(log.getIp())) &&
+                    (name == null || name.equals(log.getName())) &&
+                    (event == null || event.equals(log.getEvent())) &&
+                    (task == null || task.equals(log.getTask())) &&
+                    (status == null || status.equals(log.getStatus()))) {
+
+                filteredLogs.add(log);
+            }
+        }
+        return filteredLogs;
+    }
+
+    private List<Log> getLogs(Date after, Date before, Date date, String ip, String name,
+                              Event event, Integer task, Status status) {
+        List<Log> logs = Log.getLogs(logDir);
+        List<Log> filteredLogs = new ArrayList<>();
+        for (Log log : logs) {
+            if (log.checkDate(after, before) &&
+                    (date == null || date.equals(log.getDate())) &&
                     (ip == null || ip.equals(log.getIp())) &&
                     (name == null || name.equals(log.getName())) &&
                     (event == null || event.equals(log.getEvent())) &&

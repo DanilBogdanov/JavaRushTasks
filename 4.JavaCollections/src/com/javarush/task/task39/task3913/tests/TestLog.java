@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TestLog {
+public class TestLog{
     private static Date after = new Date();
     private static Date before = new Date();
     private static Log log = new Log("146.34.15.5", "Eduard Petrovich Morozko", new Date(), Event.SOLVE_TASK, 14, Status.OK);
@@ -28,8 +28,6 @@ public class TestLog {
 
     public static void main(String[] args) throws Exception{
 
-        Event event = Event.valueOf("DONE_TASK");
-        System.out.println(event);
     }
 
     @Test
@@ -44,4 +42,14 @@ public class TestLog {
 
     }
 
+    public Class manager() {return null;}
+    public boolean unique() {return false;}
+    public String name() {return null;}
+
+    @interface CatManager
+    {
+        Class manager();
+        boolean unique();
+        String name() default "Unknown Cat";
+    }
 }
