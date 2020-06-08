@@ -7,6 +7,16 @@ import java.util.List;
 
 /* 
 Призрачные ссылки
+Разберись в примере.
+Реализуй логику метода getFilledList класса Helper:
+1) создай список, который сможет хранить призрачные ссылки на объекты Monkey
+2) добавь в список 200 ссылок, используйте очередь helper.getQueue()
+3) верни заполненный список
+Требования:
+1. Метод getFilledList должен возвращать список заполненный фантомными ссылками на объекты типа Monkey.
+2. Метод getFilledList должен возвращать список из 200 элементов.
+3. Класс Helper не должен быть приватным.
+4. Метод getFilledList не должен быть приватным.
 */
 public class Solution {
     public static Helper helper = new Helper();
@@ -16,13 +26,13 @@ public class Solution {
 
     public static void main(String args[]) throws InterruptedException {
         helper.startTime();
-        List<PhantomReference<Monkey>> list = helper.getPopulatedList();
+        List<PhantomReference<Monkey>> list = helper.getFilledList();
 
         //before GC
         helper.checkListWithReferences(list, "before");
 
         helper.callGC();
-        helper.consumeHeap();
+        helper.heapConsuming();
 
         //after GC
         helper.checkListWithReferences(list, "after");
@@ -52,14 +62,14 @@ public class Solution {
             return queue;
         }
 
-        void consumeHeap() {
+        void heapConsuming() {
             try {
                 List<Solution> heap = new ArrayList<Solution>(100000);
                 while (true) {
                     heap.add(new Solution());
                 }
             } catch (OutOfMemoryError e) {
-                System.out.println("An out-of-memory exception has occurred");
+                System.out.println("Out of memory error raised");
             }
         }
 
@@ -71,11 +81,18 @@ public class Solution {
                 }
             }
 
-            System.out.println(String.format("The count of enqueued references is %d (%s GC was called)", count, string));
+            System.out.println(String.format("The enqueue reference count is %d (%s GC was called)", count, string));
         }
 
-        public List<PhantomReference<Monkey>> getPopulatedList() {
-            return null;
+        public List<PhantomReference<Monkey>> getFilledList() {
+            //список призрачных ссылок
+            ArrayList<PhantomReference<Monkey>> list = new ArrayList<PhantomReference<Monkey>>();
+            //создаем 200 объектов и добавляем их в список через призрачные ссылки
+            for ( int i = 0; i < 200; i++) {
+                Monkey monkey = new Monkey();
+                list.add(new PhantomReference (monkey, queue));
+            }
+            return list;
         }
 
         public void finish() throws InterruptedException {
@@ -83,8 +100,8 @@ public class Solution {
             while (queue.poll() != null) {
                 count++;
             }
-            System.out.println(count + " objects are in the phantom reference queue");
-            System.out.println("It took " + getTime() + " s");
+            System.out.println(count + " objects are in the queue of phantom reference");
+            System.out.println("It took " + getTime() + " sec");
         }
     }
 }

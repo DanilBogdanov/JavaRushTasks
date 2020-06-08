@@ -8,6 +8,22 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         solution.doSmth(new A(), null, null);
+        A a = new A();
+        a.setName(null);
+        B b = new B();
+        b.setName(null);
+        C c = new C();
+        b.setName(null);
+        System.out.println();
+        solution.doSmth(null, null, null);
+        System.out.println();
+        solution.doSmth(a, b, c);
+
+        a.setName("1");
+        b.setName("2");
+        b.setName("3");
+        System.out.println();
+        solution.doSmth(a, b, c);
     }
 
     public void doSmth(A a, B b, C c) {
@@ -48,7 +64,7 @@ public class Solution {
             b.setName("B");
         }
         try {
-            if (c != null && c.getName() != null) {
+            if (c != null & c.getName() != null) {
             }
         } catch (NullPointerException e) {
             c = new C();
