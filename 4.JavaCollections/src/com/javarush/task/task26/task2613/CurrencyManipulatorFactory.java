@@ -1,7 +1,6 @@
 package com.javarush.task.task26.task2613;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CurrencyManipulatorFactory {
     /*2. Валют может быть несколько, поэтому нам понадобится фабрика, которая будет создавать и хранить манипуляторы.
@@ -25,5 +24,9 @@ public class CurrencyManipulatorFactory {
             map.put(currencyCode, manipulator);
             return manipulator;
         }
+    }
+
+    public static Collection<CurrencyManipulator> getAllCurrencyManipulators() {
+        return map.values();
     }
 }
