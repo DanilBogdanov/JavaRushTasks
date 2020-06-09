@@ -21,7 +21,7 @@ import java.util.TreeSet;
 
 
 */
-//todo to solve task
+
 public class Solution {
     public static void main(String[] args) throws IOException {
         Path path = Paths.get(args[0]);

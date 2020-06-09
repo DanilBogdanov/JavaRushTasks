@@ -6,7 +6,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.StringReader;
 
 /* 
-Создание класса по строке xml
+Создание класса по строке xml todo
 */
 public class Solution {
     public static void main(String[] args) throws JAXBException {
